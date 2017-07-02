@@ -1,0 +1,42 @@
+<%= form_for(@datum, url: datum_index_path , remote: true) do |f| %>
+  <% if @datum.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @datum.errors.count %>件のエラーがあります。</h2>
+
+        <ul>
+        <% @datum.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+    </div>
+  <% end %>
+  <div class="form-group">
+    <div class="field">
+      <%= f.label :title%>
+      <%= f.text_field :title, class:'form-control', placeholder: "タイトル", required: true %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="field">
+      <%= f.label :from %>
+      <%= f.text_field :from, class:'form-control', placeholder: "開始金額" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="field">
+      <%= f.label :to %>
+      <%= f.text_field :to, class:'form-control', placeholder: "終了金額" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="field">
+      <%= f.label :datas %>
+      <%= f.text_field :datas, class:'form-control', placeholder: "000,000,000,..."%>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="actions">
+      <%= f.submit '登録', class:'btn btn-default' %>
+    </div>
+  </div>
+<% end %>
