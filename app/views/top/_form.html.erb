@@ -1,4 +1,4 @@
-<%= form_for(@datum, url: datum_index_path , remote: true) do |f| %>
+<%= form_for(@datum, url: datum_index_path ) do |f| %>
   <% if @datum.errors.any? %>
     <div id="error_explanation">
       <h2><%= @datum.errors.count %>件のエラーがあります。</h2>

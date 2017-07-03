@@ -11,7 +11,7 @@ class Reconcile
     @to = to
     @results = []
 
-    calculcateflux
+    calculateflux
   end
 
   def calculateflux

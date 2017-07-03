@@ -1,0 +1,14 @@
+<% @datums.each do |data| %>
+  <%= data.id %>
+  <%= data.title %>
+  <%= data.from %>
+  <%= data.to %>
+  <%= data.datas %>
+  <% if data.results.present? %>
+    <%= link_to "結果",datum_path(data.id) %>
+    <%= link_to 'csv download', datum_path(data.id, format: :csv) %>
+  <% else %>
+    処理中
+  <% end %>
+  <hr>
+<% end %>
