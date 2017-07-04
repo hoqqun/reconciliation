@@ -1,6 +1,12 @@
 # config valid only for current version of Capistrano
 lock '3.6.0'
 
+#delayed_jobの設定
+set :delayed_job_workers, 2
+set :delayed_job_prefix, 'reports'
+set :delayed_job_roles, [:app, :background]
+
+
 set :application, 'reconciliation'
 set :repo_url, 'https://github.com/hoqqun/reconciliation.git'
 
@@ -11,7 +17,7 @@ set :branch, ENV['BRANCH'] || 'master'
 set :deploy_to, '/var/www/reconciliation'
 
 # シンボリックリンクをはるフォルダ・ファイル
-set :linked_files, %w{.env config/secrets.yml}
+set :linked_files, %w{.env}
 set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets public/uploads}
 
 # 保持するバージョンの個数(※後述)
@@ -28,6 +34,10 @@ namespace :deploy do
   desc 'Restart application'
   task :restart do
     invoke 'unicorn:restart'
+  end
+
+  if Rake::Task.task_defined?('deploy:published')
+    after 'deploy:published', 'delayed_job:restart'
   end
 
   desc 'Create database'
@@ -51,6 +61,7 @@ namespace :deploy do
       end
     end
   end
+
 
   after :publishing, :restart
 
