@@ -26,10 +26,12 @@ class DatumController < ApplicationController
     @datum = Datum.new(datum_params)
     @datum.user_id = current_user.id
     @rec = Reconcile.new(@datum.datas.split(",").map{ |str| str.to_i },@datum.from.to_i,@datum.to.to_i)
-    @datum.save
-    @datum.delay.reconcileUpdate(@rec)
-
-    redirect_to datum_index_path, notice: "計算登録完了しました。"
+    if @datum.save
+      @datum.delay.reconcileUpdate(@rec)
+      redirect_to datum_index_path, notice: "計算登録完了しました。"
+    else
+      render 'new'
+    end
 
   end
 

@@ -24,19 +24,19 @@
   <div class="form-group">
     <div class="field">
       <%= f.label :from %>
-      <%= f.text_field :from, class:'form-control', placeholder: "開始金額" %>
+      <%= f.text_field :from, class:'form-control', placeholder: "開始金額", required: true %>
     </div>
   </div>
   <div class="form-group">
     <div class="field">
       <%= f.label :to %>
-      <%= f.text_field :to, class:'form-control', placeholder: "終了金額" %>
+      <%= f.text_field :to, class:'form-control', placeholder: "終了金額", required: true %>
     </div>
   </div>
   <div class="form-group">
     <div class="field">
       <%= f.label :datas %>
-      <%= f.text_field :datas, class:'form-control', placeholder: "000,000,000,..."%>
+      <%= f.text_field :datas, class:'form-control', placeholder: "000,000,000,...", required: true%>
     </div>
   </div>
   <div class="form-group">

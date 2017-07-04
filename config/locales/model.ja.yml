@@ -1,11 +1,20 @@
 ja:
   activerecord:
-    user:
-      title: "タイトル"
-      name: "名前"
-      email: "メールアドレス"
-      content: "内容"
-      current_password: "現在のパスワード"
-      password: "パスワード"
-      password_confirmation: "確認用パスワード"
-      remember_me: "ログインを記憶"
+    models:
+      user: "ユーザー"
+      datum: "リコンサイルデータ"
+    attributes:
+      user:
+        title: "タイトル"
+        name: "名前"
+        email: "メールアドレス"
+        content: "内容"
+        current_password: "現在のパスワード"
+        password: "パスワード"
+        password_confirmation: "確認用パスワード"
+        remember_me: "ログインを記憶"
+      datum:
+        title: "タイトル"
+        from: "期首金額"
+        to: "期末金額"
+        datas: "期中金額"
