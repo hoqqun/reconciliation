@@ -1,7 +1,8 @@
 class DatumController < ApplicationController
+  before_action :authenticate_user!
 
   def index
-    @datums = Datum.all
+    @datums = Datum.where(user_id: current_user.id).order(id: :DESC).page(params[:page])
   end
 
   def show
@@ -17,14 +18,18 @@ class DatumController < ApplicationController
     
   end
 
+  def new
+    @datum = Datum.new
+  end
 
   def create
     @datum = Datum.new(datum_params)
+    @datum.user_id = current_user.id
     @rec = Reconcile.new(@datum.datas.split(",").map{ |str| str.to_i },@datum.from.to_i,@datum.to.to_i)
     @datum.save
     @datum.delay.reconcileUpdate(@rec)
 
-    redirect_to root_path, notice: "計算登録完了しました。"
+    redirect_to datum_index_path, notice: "計算登録完了しました。"
 
   end
 

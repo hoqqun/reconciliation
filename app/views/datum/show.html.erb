@@ -1,1 +1,10 @@
-<%= @datum.results %>
+<div class="container">
+  <div class="intro-header2">
+  <h2>計算結果</h2><%= link_to "戻る", :back %>
+  <hr> 
+  </div>
+  <% @datum.results.each do |result| %>
+    <%= result %>
+    <hr>
+  <% end %>
+</div>

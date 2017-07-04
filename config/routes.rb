@@ -1,8 +1,16 @@
 Rails.application.routes.draw do
+  devise_for :users
+  
+  devise_scope :user do
+    authenticated :user do
+      root :to => 'datum#index', as: :authenticated_root
+    end
+  end
+
   get 'top/index'
   root 'top#index'
 
-  resources :datum, only: [:index, :create, :show]
+  resources :datum, only: [:index, :create, :show, :new]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

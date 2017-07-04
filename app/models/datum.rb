@@ -1,4 +1,6 @@
 class Datum < ActiveRecord::Base
+  belongs_to :user
+  
   serialize :datas
   serialize :results
 

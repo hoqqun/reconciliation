@@ -1,14 +1,31 @@
-<% @datums.each do |data| %>
-  <%= data.id %>
-  <%= data.title %>
-  <%= data.from %>
-  <%= data.to %>
-  <%= data.datas %>
-  <% if data.results.present? %>
-    <%= link_to "結果",datum_path(data.id) %>
-    <%= link_to 'csv download', datum_path(data.id, format: :csv) %>
-  <% else %>
-    処理中
-  <% end %>
-  <hr>
-<% end %>
+<div class="container">
+  <div class="intro-header2">
+    <h2>計算結果一覧</h2>
+    <hr>
+  </div>
+  <table class="table table-bordered">
+    <tr class="active">
+      <th>計算ID</th>
+      <th>タイトル</th>
+      <th>期首金額</th>
+      <th>期末金額</th>
+      <th>期中金額</th>
+      <th>結果</th>
+    </tr>
+      <% @datums.each do |data| %>
+        <tr>
+          <td><%= data.id %></td>
+          <td><%= data.title %></td>
+          <td><%= data.from %></td>
+          <td><%= data.to %></td>
+          <td><%= data.datas %></td>
+          <% if data.results.present? %>
+            <td><%= link_to "HTML",datum_path(data.id) %> <%= link_to 'CSV', datum_path(data.id, format: :csv) %> <%= data.results.length %>件</td>
+          <% else %>
+            <td>処理中</td>
+          <% end %>
+        </tr>
+    <% end %>
+  </table>
+  <%= paginate @datums %>
+</div>
