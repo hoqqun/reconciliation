@@ -55,3 +55,4 @@ gem 'daemons'
 gem 'devise'
 gem 'dotenv-rails'
 gem 'kaminari'
+gem 'rails_12factor', group: :production
