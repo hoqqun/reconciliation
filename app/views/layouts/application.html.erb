@@ -5,6 +5,7 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <%= analytics_init if Rails.env.production? %>
 </head>
 <body>
  <!-- Navigation -->
@@ -43,6 +44,17 @@
 
 <%= yield %>
 
+<div class="container">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- reconciliation -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-5042394206650542"
+     data-ad-slot="3623468910"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
     <!-- Footer -->
     <footer>
         <div class="container">

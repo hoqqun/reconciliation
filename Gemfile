@@ -64,3 +64,4 @@ gem 'dotenv-rails'
 gem 'kaminari'
 gem 'rails_12factor', group: :production
 gem 'unicorn'
+gem 'google-analytics-rails'
