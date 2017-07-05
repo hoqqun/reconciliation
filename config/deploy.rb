@@ -2,7 +2,7 @@
 lock '3.6.0'
 
 #delayed_jobの設定
-set :delayed_job_workers, 2
+set :delayed_job_workers, 8
 set :delayed_job_prefix, 'reports'
 set :delayed_job_roles, [:app, :background]
 
